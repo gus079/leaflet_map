@@ -1,0 +1,35 @@
+---
+title: "My First Leaflet Map"
+author: "Gustavo Seifer"
+date: "2020/May/07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## My First Leaflet Map -  Data Products Course
+Create a leaflet map object.
+```{r}
+library(leaflet)
+map <- leaflet() %>% addTiles()
+```
+
+Create a marker with a picture of Fleni and a link to its homepage.
+```{r}
+FleniIcon <- makeIcon(
+   iconUrl = "https://www.google.com/url?sa=i&url=https%3A%2F%2Far.linkedin.com%2Fcompany%2Ffleni&psig=AOvVaw3JmDfUxENDYQTd4YUE70ca&ust=1588952897333000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJCu2fmMoukCFQAAAAAdAAAAABAU",
+   iconWidth = 30*408/255, iconHeight = 30,
+   iconAnchorX = 30*408/255/2, iconAnchorY = 30/2
+)
+```
+
+Add the marker to the map and display the map.
+```{r}
+FleniPopup <- c("<a href= 'https://www.google.com/search?q=fleni&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjl0YP4jKLpAhUeIrkGHfwaA3EQ_AUoAnoECBEQBA&biw=1920&bih=937#imgrc=pweXslAbxRqktM</a>")
+map %>%
+   addTiles() %>%
+   addMarkers(lat=-34.5550316, lng=-58.4507571, popup = FleniPopup)
+```
